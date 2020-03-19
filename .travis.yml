@@ -4,6 +4,6 @@ jdk:
 #  - oraclejdk8
 os: linux
 dist: xenial
-script:
-  - "mvn clean"
-  - "mvn package"
+#script:
+#  - "mvn clean"
+#  - "mvn package"
