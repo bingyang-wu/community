@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author milo
  */
 @Controller
-public class IndexController {
+public class InexController {
 
     @GetMapping("/")
     public String hello() {
