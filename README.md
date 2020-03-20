@@ -5,9 +5,7 @@
 ## 前言
 码匠社区，跟着b站视频练习项目
 
-[视频地址](https://www.bilibili.com/video/av50200264)   
-[原仓库地址](https://github.com/codedrinker/community)   
-[社区地址](http://www.mawen.co/)
+[视频](https://www.bilibili.com/video/av50200264) -  [原仓库](https://github.com/codedrinker/community)  - [社区](http://www.mawen.co/)
 
 ## 资料
 [Spring 文档](https://spring.io/guides)    
