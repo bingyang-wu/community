@@ -20,7 +20,10 @@ public class GithubProvider {
         MediaType mediaType = MediaType.get("application/json; charset=utf-8");
         OkHttpClient client = new OkHttpClient();
 
-        RequestBody body = RequestBody.create(mediaType, JSON.toJSONString(dto));
+        String content = JSON.toJSONString(dto);
+        System.out.println(content);
+
+        RequestBody body = RequestBody.create(mediaType, content);
         Request request = new Request.Builder()
                 .url("https://github.com/login/oauth/access_token")
                 .post(body)
@@ -45,7 +48,7 @@ public class GithubProvider {
             GithubUser githubUser = JSON.parseObject(string, GithubUser.class);
             return githubUser;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("根据Token获取Github用户信息异常");
         }
         return null;
     }
