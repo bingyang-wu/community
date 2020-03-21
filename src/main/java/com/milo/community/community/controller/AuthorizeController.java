@@ -33,7 +33,9 @@ public class AuthorizeController {
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code,
                            @RequestParam(name = "state") String state) {
-        System.out.println(code);
+
+        System.out.println("code:" + code + ",state:" + state);
+
         AccessTokenDTO dto = new AccessTokenDTO();
         dto.setClient_id(clientId);
         dto.setClient_secret(clientSecret);
@@ -43,6 +45,7 @@ public class AuthorizeController {
 
         String accessToken = githubProvider.getAccessToken(dto);
         GithubUser githubUser = githubProvider.getUser(accessToken);
+
         System.out.println(githubUser.getName());
 
         return "index";
