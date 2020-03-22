@@ -30,8 +30,9 @@ public class GithubProvider {
                 .build();
         try (Response response = client.newCall(request).execute()) {
             String string = response.body().string();
+            System.out.println("String:" + string);
             String token = string.split("&")[0].split("=")[1];
-            System.out.println(token);
+            System.out.println("截取后的Token" + token);
             return token;
         } catch (IOException e) {
             e.printStackTrace();
@@ -41,11 +42,13 @@ public class GithubProvider {
 
     public GithubUser getUser(String accessToken) {
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url("https://api.github.com/user?access_token=" + accessToken).build();
+        Request request = new Request.Builder()
+                .url("https://api.github.com/user?access_token=" + accessToken)
+                .build();
         try {
             Response response = client.newCall(request).execute();
-            String string = response.body().string();
-            GithubUser githubUser = JSON.parseObject(string, GithubUser.class);
+            String user = response.body().string();
+            GithubUser githubUser = JSON.parseObject(user, GithubUser.class);
             return githubUser;
         } catch (IOException e) {
             System.out.println("根据Token获取Github用户信息异常");

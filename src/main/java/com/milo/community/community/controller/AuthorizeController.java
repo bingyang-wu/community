@@ -2,6 +2,8 @@ package com.milo.community.community.controller;
 
 import com.milo.community.community.dto.AccessTokenDTO;
 import com.milo.community.community.dto.GithubUser;
+import com.milo.community.community.mapper.UserMapper;
+import com.milo.community.community.model.User;
 import com.milo.community.community.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.UUID;
 
 /**
  * 授权
@@ -32,6 +35,9 @@ public class AuthorizeController {
     @Autowired
     private GithubProvider githubProvider;
 
+    @Autowired
+    private UserMapper userMapper;
+
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code,
                            @RequestParam(name = "state") String state,
@@ -49,10 +55,16 @@ public class AuthorizeController {
         String accessToken = githubProvider.getAccessToken(dto);
         GithubUser githubUser = githubProvider.getUser(accessToken);
 
-        System.out.println(githubUser.getName());
-
         if (githubUser != null) {
             request.getSession().setAttribute("user", githubUser);
+
+            User user = new User();
+            user.setToken(UUID.randomUUID().toString());
+            user.setName(githubUser.getName());
+            user.setAccountId(String.valueOf(githubUser.getId()));
+            user.setGmtCreate(System.currentTimeMillis());
+            user.setGmtModified(System.currentTimeMillis());
+            userMapper.insert(user);
             // 登录成功,写Cookie和Session
             return "redirect:/";
         } else {
