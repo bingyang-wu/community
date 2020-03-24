@@ -1,4 +1,4 @@
-package com.milo.community.community.model;
+package com.milo.community.model;
 
 import lombok.Data;
 

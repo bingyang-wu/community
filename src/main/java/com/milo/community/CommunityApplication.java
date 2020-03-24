@@ -1,4 +1,4 @@
-package com.milo.community.community;
+package com.milo.community;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

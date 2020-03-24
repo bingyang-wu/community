@@ -1,6 +1,6 @@
-package com.milo.community.community.mapper;
+package com.milo.community.mapper;
 
-import com.milo.community.community.model.User;
+import com.milo.community.model.User;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

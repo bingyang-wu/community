@@ -1,10 +1,10 @@
-package com.milo.community.community.service;
+package com.milo.community.service;
 
-import com.milo.community.community.dto.QuestionDTO;
-import com.milo.community.community.mapper.QuestionMapper;
-import com.milo.community.community.mapper.UserMapper;
-import com.milo.community.community.model.Question;
-import com.milo.community.community.model.User;
+import com.milo.community.dto.QuestionDTO;
+import com.milo.community.mapper.QuestionMapper;
+import com.milo.community.mapper.UserMapper;
+import com.milo.community.model.Question;
+import com.milo.community.model.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

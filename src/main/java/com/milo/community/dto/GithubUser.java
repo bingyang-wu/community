@@ -1,4 +1,4 @@
-package com.milo.community.community.dto;
+package com.milo.community.dto;
 
 import lombok.Data;
 

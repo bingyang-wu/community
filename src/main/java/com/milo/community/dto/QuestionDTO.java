@@ -1,6 +1,6 @@
-package com.milo.community.community.dto;
+package com.milo.community.dto;
 
-import com.milo.community.community.model.User;
+import com.milo.community.model.User;
 import lombok.Data;
 
 /**

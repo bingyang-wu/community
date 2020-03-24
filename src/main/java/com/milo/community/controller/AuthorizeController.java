@@ -1,19 +1,17 @@
-package com.milo.community.community.controller;
+package com.milo.community.controller;
 
-import com.milo.community.community.dto.AccessTokenDTO;
-import com.milo.community.community.dto.GithubUser;
-import com.milo.community.community.mapper.UserMapper;
-import com.milo.community.community.model.User;
-import com.milo.community.community.provider.GithubProvider;
+import com.milo.community.dto.AccessTokenDTO;
+import com.milo.community.dto.GithubUser;
+import com.milo.community.mapper.UserMapper;
+import com.milo.community.model.User;
+import com.milo.community.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 

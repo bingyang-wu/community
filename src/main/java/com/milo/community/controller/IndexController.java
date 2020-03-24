@@ -1,9 +1,9 @@
-package com.milo.community.community.controller;
+package com.milo.community.controller;
 
-import com.milo.community.community.dto.QuestionDTO;
-import com.milo.community.community.mapper.UserMapper;
-import com.milo.community.community.model.User;
-import com.milo.community.community.service.QuestionSevice;
+import com.milo.community.dto.QuestionDTO;
+import com.milo.community.mapper.UserMapper;
+import com.milo.community.model.User;
+import com.milo.community.service.QuestionSevice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

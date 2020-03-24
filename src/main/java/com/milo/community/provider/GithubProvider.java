@@ -1,8 +1,8 @@
-package com.milo.community.community.provider;
+package com.milo.community.provider;
 
 import com.alibaba.fastjson.JSON;
-import com.milo.community.community.dto.AccessTokenDTO;
-import com.milo.community.community.dto.GithubUser;
+import com.milo.community.dto.AccessTokenDTO;
+import com.milo.community.dto.GithubUser;
 import okhttp3.*;
 import org.springframework.stereotype.Component;
 
