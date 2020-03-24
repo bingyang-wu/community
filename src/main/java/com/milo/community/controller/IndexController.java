@@ -1,5 +1,6 @@
 package com.milo.community.controller;
 
+import com.milo.community.dto.PaginationDTO;
 import com.milo.community.dto.QuestionDTO;
 import com.milo.community.mapper.UserMapper;
 import com.milo.community.model.User;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -26,7 +28,8 @@ public class IndexController {
     private QuestionSevice questionSevice;
 
     @GetMapping("/")
-    public String hello(Model model, HttpServletRequest request) {
+    public String hello(@RequestParam(name = "page", defaultValue = "1") int page,
+                        @RequestParam(name = "size", defaultValue = "5") int size, Model model, HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
 
         if (cookies != null) {
@@ -45,8 +48,8 @@ public class IndexController {
         }
 
         // 问题列表
-        List<QuestionDTO> questionList = questionSevice.list();
-        model.addAttribute("questions", questionList);
+        PaginationDTO pagination = questionSevice.list(page,size);
+        model.addAttribute("pagination", pagination);
 
         return "index";
     }

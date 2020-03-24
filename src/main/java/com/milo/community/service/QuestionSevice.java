@@ -1,5 +1,6 @@
 package com.milo.community.service;
 
+import com.milo.community.dto.PaginationDTO;
 import com.milo.community.dto.QuestionDTO;
 import com.milo.community.mapper.QuestionMapper;
 import com.milo.community.mapper.UserMapper;
@@ -21,10 +22,12 @@ public class QuestionSevice {
     @Autowired
     private QuestionMapper questionMapper;
 
-    public List<QuestionDTO> list() {
+    public PaginationDTO list(int page, int size) {
+
+        int offset = size * (page - 1);
 
         List<QuestionDTO> questionDTOList = new ArrayList<>();
-        List<Question> questionList = questionMapper.list();
+        List<Question> questionList = questionMapper.list(offset, size);
         for (Question question : questionList) {
             QuestionDTO dto = new QuestionDTO();
             BeanUtils.copyProperties(question, dto);
@@ -33,6 +36,13 @@ public class QuestionSevice {
             questionDTOList.add(dto);
         }
 
-        return questionDTOList;
+        PaginationDTO paginationDTO = new PaginationDTO();
+        paginationDTO.setQuestions(questionDTOList);
+
+        int count = questionMapper.count();
+
+        paginationDTO.setPagination(count,page,size);
+
+        return paginationDTO;
     }
 }
