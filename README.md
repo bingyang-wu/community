@@ -3,7 +3,7 @@
 ![https://img.shields.io/badge/springboot-2.2.5-yellow.svg?style=flat-square](https://img.shields.io/badge/springboot-2.2.5-yellow.svg?style=flat-square)
 
 ## 前言
-码匠社区，跟着b站视频练习项目
+码匠社区，跟着b站视频做的练习项目
 
 [视频](https://www.bilibili.com/video/av50200264) -  [原仓库](https://github.com/codedrinker/community)  - [社区](http://www.mawen.co/)
 
