@@ -20,9 +20,6 @@ import java.util.List;
  */
 @Controller
 public class IndexController {
-    @Autowired
-    private UserMapper userMapper;
-
 
     @Autowired
     private QuestionSevice questionSevice;
@@ -30,25 +27,9 @@ public class IndexController {
     @GetMapping("/")
     public String hello(@RequestParam(name = "page", defaultValue = "1") int page,
                         @RequestParam(name = "size", defaultValue = "5") int size, Model model, HttpServletRequest request) {
-        Cookie[] cookies = request.getCookies();
-
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if ("token".equals(cookie.getName())) {
-                    String token = cookie.getValue();
-                    User user = userMapper.findByToken(token);
-
-                    if (user != null) {
-                        request.getSession().setAttribute("user", user);
-                    }
-
-                    break;
-                }
-            }
-        }
 
         // 问题列表
-        PaginationDTO pagination = questionSevice.list(page,size);
+        PaginationDTO pagination = questionSevice.list(page, size);
         model.addAttribute("pagination", pagination);
 
         return "index";
